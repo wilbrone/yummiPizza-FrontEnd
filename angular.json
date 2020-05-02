@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "yummi-pizza"
+    }
+  },
+  "defaultProject": "yummi-pizza",
+  "cli": {
+    "analytics": false
+  }
 }
