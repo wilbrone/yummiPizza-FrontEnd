@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { HomeService } from '../../services/home/home.service';
 
@@ -9,12 +10,22 @@ import { HomeService } from '../../services/home/home.service';
 })
 export class HomeComponent implements OnInit {
   pizza: any;
-  constructor(private homeService: HomeService ) { }
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  constructor(private homeService: HomeService, private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
     this.homeService.getPizza().subscribe(data => {
       this.pizza = data;
       console.log(this.pizza);
+    });
+
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
     });
   }
 
