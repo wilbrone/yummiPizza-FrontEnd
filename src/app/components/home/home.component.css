@@ -1,3 +1,13 @@
+.home {
+    background-image: url('../../../assets/bg-images/photo-1513104890138-7c749659a591.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 91%;
+    margin-top: 4%;
+    border: solid;
+}
+
 .mat-stepper-horizontal {
     margin-top: 8px;
 }
