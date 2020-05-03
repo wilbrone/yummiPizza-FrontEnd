@@ -52,6 +52,14 @@
     height: 100%;
 }
 
+.pizzas {
+    background-image: url(https://www.wentzstore.com/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/f/u/fundo_1821_capa__220x170.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: whitesmoke;
+}
+
 .mat-stepper-horizontal {
     margin-top: 8px;
 }
