@@ -1,7 +1,11 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<div *ngFor='let p of pizza'>
+  {{ p.name }}
+</div>
+
+<mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel>Make Your Order</ng-template>
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
@@ -13,7 +17,7 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Make Your Order</ng-template>
+      <ng-template matStepLabel>Fill in Delivery Address</ng-template>
       <mat-form-field>
         <mat-label>Address</mat-label>
         <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
