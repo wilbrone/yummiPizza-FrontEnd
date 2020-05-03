@@ -32,7 +32,24 @@
 
 .about {
     background-color: #ffffe5;
-    height: 40%;
+    height: 50%;
+}
+
+.abt {
+    justify-content: space-around;
+    margin: 0 auto;
+    padding-top: 2%;
+    height: 90%;
+    text-align: center;
+}
+
+.abt>mat-card>p {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+
+.menu {
+    height: 100%;
 }
 
 .mat-stepper-horizontal {
