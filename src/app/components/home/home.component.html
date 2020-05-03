@@ -1,4 +1,4 @@
-<div class='home'>
+<section class='home'>
   <div id='text'>
     YUMMI PIZZA
   </div>
@@ -6,8 +6,27 @@
     Yummi Pizza is the world’s greatest. Nothing says “I love you,” “I’m sorry,” or “Let’s be friends,” better than Yummi Pizza.<br>
     It’s a universal love language, and is perfect at <span style='background-color:#ffb116;font-style: italic;'>any time</span>,<br> for <span style='font-style: italic;background-color:#ffb116;'>any occasion</span>.
   </p>
+  <button mat-button style='background-color: #ffb116;margin-top: 5%;margin-left: 15%;color:white;font-style:'>ORDER NOW</button>
+</section>
 
-</div>
+<section class='about'>
+  <mat-grid-list cols="5" rowHeight="100px">
+    <mat-grid-tile style="border:solid;">
+      trial
+    </mat-grid-tile>
+
+    <mat-grid-tile style="border:solid;">
+      tria
+    </mat-grid-tile>
+
+    <mat-grid-tile style="border:solid;">
+      trial
+    </mat-grid-tile>
+  </mat-grid-list>
+</section>
+  <img src='https://getdrawings.com/vectors/pizza-vector-free-1.png' width='90%' style='margin-top:3%;'>
+  <img src='https://lh3.googleusercontent.com/proxy/TalYkB1_gXv4m8YaIXz9wGyouIqa090epeY_SA-T1EIKGgXKROu6Mvkp-DojEa_jFMvSH5AbGcdEqqge87v0CbeSImhl3OFeHFUrDUbostrKA9CvhW3KKPaBXDnPXsXLbn0PHvPtQj5SuJ9_Qe68LXGUMhlAFZgO6JA' width='30%%'>
+
 
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">

@@ -14,6 +14,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
@@ -38,7 +39,8 @@ import { OrderComponent } from './components/order/order.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,6 @@
     background-size: cover;
     height: 91%;
     margin-top: 4%;
-    border: solid;
 }
 
 #text {
@@ -31,8 +30,9 @@
     line-height: 1.6em;
 }
 
-.mat-chip-list-wrapper {
-    margin: 0;
+.about {
+    background-color: #ffffe5;
+    height: 40%;
 }
 
 .mat-stepper-horizontal {
