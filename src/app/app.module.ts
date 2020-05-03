@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,7 @@ import { OrderComponent } from './components/order/order.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClient
+    // HttpClient
   ],
   providers: [],
   bootstrap: [AppComponent]
