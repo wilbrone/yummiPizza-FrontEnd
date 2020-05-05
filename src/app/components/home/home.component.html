@@ -39,17 +39,26 @@
 </section>
 
 <section class="menu">
-  <div class="container-fluid row" style="border:solid;margin-right:0;margin-left:0;padding:0;">
+  <div class="container-fluid row" style="margin-right:0;margin-left:0;padding:0;">
     <img  style="" src='https://lh3.googleusercontent.com/proxy/TalYkB1_gXv4m8YaIXz9wGyouIqa090epeY_SA-T1EIKGgXKROu6Mvkp-DojEa_jFMvSH5AbGcdEqqge87v0CbeSImhl3OFeHFUrDUbostrKA9CvhW3KKPaBXDnPXsXLbn0PHvPtQj5SuJ9_Qe68LXGUMhlAFZgO6JA' width='30%'>
-    <div style="border:solid;width:70%;">
-      <div style="text-align:center;border:solid;width:max-content;height:max-content;margin:0 auto;">
+    <div style="width:70%;">
+      <div style="text-align:center;width:max-content;height:max-content;margin:0 auto;">
         <h5 style="font-family: 'Rancho', cursive;letter-spacing:0.2em;font-weight:bold;color:#ffb116;">ALWAYS QUALITY</h5>
         <h1 style="letter-spacing:0.2em;font-weight:bold;font-size:2em;font-family: 'Rubik', cursive;">Discover Our Pizza</h1>
       </div>
-      <div class="container row" style="margin:0;justify-content:space-around;">
-        <div class="col-md-4" style="border:solid;" *ngFor="let p of pizza">
+      <div class="row" style="margin:0;justify-content:space-around;">
+        <div class="col-md-4" style="padding-top:2rem;min-height:40%;" *ngFor="let p of pizza">
           <mat-card class="pizzas">
-              <h4>{{ p.name }}</h4>
+            <h4 style="font-size:1.5rem;font-family: 'Rancho', cursive;letter-spacing:0.1em;font-weight:bold;color:#ffb116;">{{ p.name }}</h4>
+            <p style="text-align:center;">
+              {{ p.description }}
+            </p>
+            <p style="align-self: flex;">
+              Size: &nbsp;<span style="font-style:italic;font-size:1.2rem;">{{ p.size }}</span>
+              <span style="float:right;font-size:1.5rem;font-weight:bold;">
+                &pound;{{ p.cost }}.<sub>00</sub>
+              </span>
+            </p>
           </mat-card>
         </div>
       </div>
