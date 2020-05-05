@@ -53,13 +53,13 @@
             <p style="text-align:center;">
               {{ p.description }}
             </p>
-            <p style="vertical-align: bottom;">
+            <p style="vertical-align: bottom;flex-direction: column;">
               Size: &nbsp;<span style="font-style:italic;font-size:1.2rem;">{{ p.size }}</span>
               <span style="float:right;font-size:1.5rem;font-weight:bold;">
                 &pound;{{ p.cost }}.<sub>00</sub>
               </span>
             </p>
-            <button mat-raised-button style="vertical-align: bottom;">Basic</button>
+            <button mat-raised-button style="vertical-align: bottom;width:100%;background-color:#ffb116;" (click)="openDialog(p.id)">Add to Cart</button>
           </mat-card>
         </div>
       </div>

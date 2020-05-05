@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
@@ -40,7 +41,8 @@ import { OrderComponent } from './components/order/order.component';
     MatIconModule,
     MatCardModule,
     MatChipsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

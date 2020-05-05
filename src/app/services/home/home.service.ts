@@ -24,4 +24,10 @@ export class HomeService {
 
     return this.http.get(url, this.httpOptions);
   }
+
+  getSinglePizza(param: any){
+    const url = this.path + '/' + param;
+
+    return this.http.get(url, this.httpOptions);
+  }
 }
