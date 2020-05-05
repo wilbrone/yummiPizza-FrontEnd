@@ -1,11 +1,11 @@
 <h3 mat-dialog-title>Hi {{data.name}}</h3>
 
 <div mat-dialog-content>
-  <div class="col-md-4" style="padding-top:2rem;min-height:40%;" *ngFor="let p of singlePizza">
+  <div class="col-md-4" style="padding-top:2rem;min-height:40%;">
     <mat-card class="pizzas">
-      <h4 style="font-size:1.5rem;font-family: 'Rancho', cursive;letter-spacing:0.1em;font-weight:bold;color:#ffb116;">{{ p.name }}</h4>
+      <h4 style="font-size:1.5rem;font-family: 'Rancho', cursive;letter-spacing:0.1em;font-weight:bold;color:#ffb116;">{{ singlePizza.name }}</h4>
       <p style="text-align:center;">
-        {{ p.description }}
+        {{ singlePizza.description }}
       </p>
       <p style="vertical-align: bottom;flex-direction: column;">
         Size: &nbsp;<span style="font-style:italic;font-size:1.2rem;">{{ p.size }}</span>

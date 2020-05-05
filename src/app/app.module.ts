@@ -45,6 +45,6 @@ import { OrderComponent } from './components/order/order.component';
     MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

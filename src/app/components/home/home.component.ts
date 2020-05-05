@@ -1,6 +1,9 @@
-import { Component, OnInit,Inject } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import {FormBuilder, FormGroup, Validators,  FormControl } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 import { HomeService } from '../../services/home/home.service';
 
@@ -13,19 +16,20 @@ export class HomeComponent implements OnInit {
   pizza: any;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  singlePizza: any;
 
-  constructor(private homeService: HomeService, private formBuilder: FormBuilder, public dialog: MatDialog) { }
+  quantity = new FormControl('');
+
+  constructor(private homeService: HomeService, private route: ActivatedRoute, private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   openDialog(id: any): void {
     console.log(id);
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: id
+    this.homeService.getSinglePizza(id).subscribe(data => {
+      this.singlePizza = data;
+      console.log(this.singlePizza);
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    console.log(this.quantity.value);
   }
 
 
@@ -41,33 +45,6 @@ export class HomeComponent implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-  }
-
-}
-
-
-// for the dialog window
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'pizza.html',
-})
-export class DialogOverviewExampleDialog implements OnInit{
-
-  singlePizza: any;
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    private homeService: HomeService,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
-
-  ngOnInit(){
-    this.homeService.getSinglePizza(this.data).subscribe(data => {
-      this.singlePizza = data;
-      console.log(this.singlePizza);
-    });
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 
 }
