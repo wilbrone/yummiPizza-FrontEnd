@@ -30,4 +30,8 @@ export class HomeService {
 
     return this.http.get(url, this.httpOptions);
   }
+
+  createOrder(id, quantity, totalCost){
+    const url = this.sPath + 'create?' + 'pizza_id=' + id + 'quantity=' + quantity + 'totalCost=' + totalCost;
+  }
 }

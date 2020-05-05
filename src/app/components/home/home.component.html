@@ -59,11 +59,11 @@
                 &pound;{{ p.cost }}.<sub>00</sub>
               </span>
             </p>
-            <mat-form-field style="color:white;">
-              <mat-label>Quantity</mat-label>
-              <input type="number" matInput [formControl]="quantity">
+            <mat-form-field style="color:white !important;">
+              <mat-label style="color:white !important;">Quantity</mat-label>
+              <input type="number" matInput [formControl]="quantity" style="color:white !important;">
             </mat-form-field>
-            <button mat-raised-button style="vertical-align: bottom;width:100%;background-color:#ffb116;" (click)="openDialog(p.id)">Add to Cart</button>
+            <button mat-raised-button style="vertical-align: bottom;width:100%;background-color:#ffb116;" (click)="createOrder(p.id)">Add to Cart</button>
           </mat-card>
         </div>
       </div>
