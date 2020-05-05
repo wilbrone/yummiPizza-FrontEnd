@@ -1,6 +1,18 @@
 # YummiPizza
 
+#### Yummi Pizza App, 1st May, 2020
+#### By **Wilbrone**
+
+## Description
+This application allows users to go through available pizza we have. User selects the one they need, the user will also be required to enter contact and delivery address.
+
+## Technologies Used
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+and deployed on Github.
+
+## BDD
+User gets lists of Pizza.
+User sends selected pizza and contact details then gets response with the order made. 
 
 ## Development server
 
@@ -25,3 +37,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Support, Further help and contact details about this application
+wilbroneokoth@gmail.com
+
+## License
+[MIT license](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2020 **Wilbrone Baron**
