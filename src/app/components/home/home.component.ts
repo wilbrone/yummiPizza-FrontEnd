@@ -20,8 +20,10 @@ export class HomeComponent implements OnInit {
 
   quantity = new FormControl('');
   qnt: any;
-  unit_price: any;
+  unitprice: any;
   totalCost: any;
+
+  order: any;
 
   constructor(private homeService: HomeService, private route: ActivatedRoute, private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
@@ -35,13 +37,20 @@ export class HomeComponent implements OnInit {
     console.log(this.quantity.value);
     this.qnt = this.quantity.value;
 
-    this.unit_price = this.singlePizza.cost;
+    this.unitprice = this.singlePizza.cost;
 
-    this.totalCost = this.qnt * this.unit_price;
+    this.totalCost = this.qnt * this.unitprice;
     console.log(this.totalCost);
 
-
-
+    this.homeService.createOrder(id, this.qnt, this.totalCost).subscribe(
+      res => {
+        this.order = res;
+        console.log(res.text());
+      },
+      err => {
+        console.log(err.text());
+      }
+    );
   }
 
 
