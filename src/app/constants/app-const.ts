@@ -6,5 +6,5 @@ export class AppConst{
   public static serverPath = 'https://yummi-001.herokuapp.com/api/pizza/order/';
 
   // public static contactPath = 'http://localhost:8000/api/pizza/contact/create';
-  public static serverPath = 'https://yummi-001.herokuapp.com/api/pizza/contact/create';
+  public static contactPath = 'https://yummi-001.herokuapp.com/api/pizza/contact/create';
 }
