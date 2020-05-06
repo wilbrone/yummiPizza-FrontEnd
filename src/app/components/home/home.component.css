@@ -64,6 +64,14 @@
     /* justify-content: flex-top; */
 }
 
+.orders {
+    height: 100%;
+    border: solid red;
+    position: absolute;
+    top: 335%;
+    width: 100%;
+}
+
 .mat-stepper-horizontal {
     margin-top: 8px;
 }

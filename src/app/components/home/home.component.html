@@ -39,15 +39,18 @@
 </section>
 
 <section class="menu">
-  <div class="container-fluid row" style="margin-right:0;margin-left:0;padding:0;">
-    <img  style="" src='https://lh3.googleusercontent.com/proxy/TalYkB1_gXv4m8YaIXz9wGyouIqa090epeY_SA-T1EIKGgXKROu6Mvkp-DojEa_jFMvSH5AbGcdEqqge87v0CbeSImhl3OFeHFUrDUbostrKA9CvhW3KKPaBXDnPXsXLbn0PHvPtQj5SuJ9_Qe68LXGUMhlAFZgO6JA' width='30%'>
-    <div style="width:70%;">
-      <div style="text-align:center;width:max-content;height:max-content;margin:0 auto;">
-        <h5 style="font-family: 'Rancho', cursive;letter-spacing:0.2em;font-weight:bold;color:#ffb116;">ALWAYS QUALITY</h5>
-        <h1 style="letter-spacing:0.2em;font-weight:bold;font-size:2em;font-family: 'Rubik', cursive;">Discover Our Pizza</h1>
-      </div>
+  <div class="container-fluid row">
+    <img  style="" src='https://www.freeiconspng.com/uploads/pizza-png-25.png' width='30%'>
+    <div style="text-align:center;width:max-content;height:max-content;margin:0 auto;">
+      <h5 style="font-family: 'Rancho', cursive;letter-spacing:0.2em;font-weight:bold;color:#ffb116;">ALWAYS QUALITY</h5>
+      <h1 style="letter-spacing:0.2em;font-weight:bold;font-size:2em;font-family: 'Rubik', cursive;">Discover Our Pizza</h1>
+    </div>
+  </div>
+
+  <div class="container-fluid row" style="margin-right:0;margin-left:0;padding:0;position:initial;">
+    <div style="width:70%;margin:0 auto;">
       <div class="row" style="margin:0;justify-content:space-around;">
-        <div class="col-md-4" style="padding-top:2rem;min-height:40%;" *ngFor="let p of pizza">
+        <div class="col-md-3" style="padding-top:2rem;min-height:40%;" *ngFor="let p of pizza">
           <mat-card class="pizzas">
             <h4 style="font-size:1.5rem;font-family: 'Rancho', cursive;letter-spacing:0.1em;font-weight:bold;color:#ffb116;">{{ p.name }}</h4>
             <p style="text-align:center;">
@@ -71,7 +74,53 @@
   </div>
 </section>
 
-<sections *ngIf="singlePizza">
-  {{ singlePizza.name }}
+<sections class="orders" *ngIf="singlePizza">
+
+  <mat-card style="width:80%;margin:0 auto;">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper style="">
+      <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Pizza selected</ng-template>
+
+        <div class="" style="padding-top:2rem;min-height:40%;">
+          <mat-card>
+            <h4 style="font-size:1.5rem;font-family: 'Rancho', cursive;letter-spacing:0.1em;font-weight:bold;color:#ffb116;">{{ singlePizza.name }}</h4>
+            <p style="">
+              {{ singlePizza.description }}
+            </p>
+            <p>Qnt. : {{order.quantity}}</p>
+            <p style="vertical-align: bottom;flex-direction: column;">
+              Size: &nbsp;<span style="font-style:italic;font-size:1.2rem;">{{ singlePizza.size }}</span>
+              <span style="float:right;font-size:1.5rem;font-weight:bold;">
+                unit Price: &pound;{{ singlePizza.cost }}.<sub>00</sub>
+              </span>
+            </p>
+          </mat-card>
+        </div>
+
+        <div>
+          <button mat-button matStepperNext>Add Contact</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fill out your address</ng-template>
+            ADress
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
 </sections>
+<div class="try" *ngIf="singlePizza">Content to render when condition is true.</div>
 

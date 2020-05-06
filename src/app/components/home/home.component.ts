@@ -34,18 +34,25 @@ export class HomeComponent implements OnInit {
       console.log(this.singlePizza);
     });
 
+    for(let i of this.pizza){
+      if(i.id = id){
+        this.unitprice = i.cost;
+      }
+    }
+
+
+
     console.log(this.quantity.value);
     this.qnt = this.quantity.value;
 
-    this.unitprice = this.singlePizza.cost;
 
     this.totalCost = this.qnt * this.unitprice;
     console.log(this.totalCost);
 
     this.homeService.createOrder(id, this.qnt, this.totalCost).subscribe(
       res => {
-        this.order = res;
-        console.log(res.data);
+        this.order = res.data;
+        console.log(this.order);
       },
       err => {
         console.log(err.text);
