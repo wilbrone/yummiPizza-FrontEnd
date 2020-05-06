@@ -14,8 +14,14 @@ import { HomeService } from '../../services/home/home.service';
 })
 export class HomeComponent implements OnInit {
   pizza: any;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  contactForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl(''),
+    apartment: new FormControl(''),
+    street: new FormControl(''),
+  });
+
   singlePizza: any;
 
   quantity = new FormControl('');
@@ -24,6 +30,7 @@ export class HomeComponent implements OnInit {
   totalCost: any;
 
   order: any;
+  receipt: any;
 
   constructor(private homeService: HomeService, private route: ActivatedRoute, private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
@@ -45,19 +52,31 @@ export class HomeComponent implements OnInit {
     console.log(this.quantity.value);
     this.qnt = this.quantity.value;
 
-
-    this.totalCost = this.qnt * this.unitprice;
+    // Delivery cost is 5 Euros
+    this.totalCost = (this.qnt * this.unitprice) + 5;
     console.log(this.totalCost);
 
     this.homeService.createOrder(id, this.qnt, this.totalCost).subscribe(
       res => {
-        this.order = res.data;
+        this.order = res;
         console.log(this.order);
       },
       err => {
         console.log(err.text);
       }
     );
+  }
+
+  onSubmit(){
+    console.log(this.contactForm.value);
+    const info: any = this.contactForm.value;
+
+    this.homeService.createContact(info,this.order.data.id).subscribe(res=>{
+      console.log(res);
+
+      this.receipt = res;
+    });
+
   }
 
 
@@ -67,12 +86,6 @@ export class HomeComponent implements OnInit {
       console.log(this.pizza);
     });
 
-    this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
   }
 
 }
