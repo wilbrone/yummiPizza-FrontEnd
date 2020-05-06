@@ -32,7 +32,7 @@ export class HomeService {
   }
 
   createOrder(id, quantity, totalCost){
-    const url = this.sPath + 'create?' + 'pizza_id=' + id + 'quantity=' + quantity + 'totalCost=' + totalCost;
+    const url = this.sPath + 'create?' + 'pizza_id=' + id + '&' + 'quantity=' + quantity + '&' + 'totalCost=' + totalCost;
     console.log(url);
 
     return this.http.post(url, this.httpOptions);

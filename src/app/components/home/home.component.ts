@@ -45,10 +45,10 @@ export class HomeComponent implements OnInit {
     this.homeService.createOrder(id, this.qnt, this.totalCost).subscribe(
       res => {
         this.order = res;
-        console.log(res.text());
+        console.log(res.data);
       },
       err => {
-        console.log(err.text());
+        console.log(err.text);
       }
     );
   }
