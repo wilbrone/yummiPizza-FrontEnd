@@ -68,7 +68,7 @@
               <mat-label style="color:white !important;">Quantity</mat-label>
               <input type="number" matInput [formControl]="quantity" style="color:white !important;">
             </mat-form-field>
-            <button mat-raised-button style="vertical-align: bottom;width:100%;background-color:#ffb116;" (click)="createOrder(p.id)">Add to Cart</button>
+            <button mat-raised-button style="vertical-align: bottom;width:100%;background-color:#ffb116;" (click)="createOrderItem(p.id)">Add to Cart</button>
           </mat-card>
         </div>
       </div>
@@ -76,92 +76,3 @@
   </div>
 </section>
 
-<section class="orders" *ngIf="singlePizza">
-
-  <mat-card style="width:80%;margin:0 auto;">
-    <mat-horizontal-stepper #stepper style="">
-      <mat-step>
-        <ng-template matStepLabel>Pizza selected</ng-template>
-
-        <div class="" style="padding-top:2rem;min-height:40%;">
-          <mat-card>
-            <h4 style="font-size:1.5rem;font-family: 'Rancho', cursive;letter-spacing:0.1em;font-weight:bold;color:#ffb116;">{{ singlePizza.name }}</h4>
-            <p style="">
-              {{ singlePizza.description }}
-            </p>
-            <p>Qnt. : {{order.data.quantity}}</p>
-            <p style="vertical-align: bottom;flex-direction: column;">
-              Size: &nbsp;<span style="font-style:italic;font-size:1.2rem;">{{ singlePizza.size }}</span>
-              <span style="float:right;">
-                Unit Price:
-                <span style="font-size:1.5rem;font-weight:bold;">&pound;{{ singlePizza.cost }}.<sub>00</sub></span>
-              </span>
-            </p>
-          </mat-card>
-        </div>
-
-        <div>
-          <button mat-button matStepperNext>Add Contact</button>
-        </div>
-      </mat-step>
-      <mat-step [stepControl]="contactForm">
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <ng-template matStepLabel>Fill out your address</ng-template>
-            <div class="example-container" style="border:solid;width:60%;min-height:70%;margin:0 auto;">
-              <mat-form-field appearance="fill" style="float:left;">
-                <mat-label>Full Names :</mat-label>
-                <input type="text" matInput  formControlName="name">
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" style="float:left;">
-                <mat-label>Email :</mat-label>
-                <input type="text" matInput  formControlName="email">
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" style="float:left;">
-                <mat-label>Phone No. :</mat-label>
-                <input type="text" matInput formControlName="phone">
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" style="float:left;">
-                <mat-label>Apartment :</mat-label>
-                <input type="text" matInput formControlName="apartment">
-              </mat-form-field>
-
-              <mat-form-field appearance="fill" style="float:left;">
-                <mat-label>Street :</mat-label>
-                <input type="text" matInput formControlName="street">
-              </mat-form-field>
-            </div>
-          <div>
-            <button mat-button matStepperNext type="submit" [disabled]="!contactForm.valid">Done</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>View Your Receipt</ng-template>
-        <div *ngIf="receipt">
-          <h4>Hi, {{ receipt.data.name }}</h4>
-          <p>Thank you for choosing us</p>
-          Order No.: &nbsp;{{ receipt.data.order.orderNumber }}<br>
-          Customer Name: &nbsp;{{ receipt.data.name }}<br>
-          Customer Number: &nbsp;{{ receipt.data.phone }}
-          <br><br>
-          <span style="font-weight:bold;"><em>Order Item</em></span><br>
-          <span>Pizza: &nbsp;{{ singlePizza.name }} &nbsp;&nbsp;&nbsp;&nbsp; &pound;{{ singlePizza.cost }}.<sub>00</sub></span>
-          <br>
-          Quantity: &nbsp;{{ order.data.quantity }}
-          <br>
-          <span>Delivery address: &nbsp;{{ receipt.data.street }}, {{ receipt.data.apartment }}</span>
-          <br>
-          <span>Delivery Cost: &nbsp;&pound;5.<sub>00</sub></span>
-          <br>
-          <span style="font-size:1.5em;">Total Cost: &nbsp;&nbsp;&nbsp;&nbsp; &pound;{{ receipt.data.order.totalCost }}.<sub>00</sub></span>
-        </div>
-        <div>
-          <button mat-button (click)="stepper.reset()">Okay</button>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </mat-card>
-</section>

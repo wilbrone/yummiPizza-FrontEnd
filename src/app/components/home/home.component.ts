@@ -32,34 +32,56 @@ export class HomeComponent implements OnInit {
   order: any;
   receipt: any;
 
-  constructor(private homeService: HomeService, private route: ActivatedRoute, private formBuilder: FormBuilder, public dialog: MatDialog) { }
+  items: any;
 
-  createOrder(id: any): void {
+  orderItem: OrderItem = new OrderItem();
+
+  constructor(
+    private homeService: HomeService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
+    ) { }
+
+    ngOnInit(): void {
+      this.homeService.getPizza().subscribe(data => {
+        this.pizza = data;
+        console.log(this.pizza);
+      });
+
+    }
+
+  createOrderItem(id: any): void {
     console.log(id);
-    this.homeService.getSinglePizza(id).subscribe(data => {
-      this.singlePizza = data;
-      console.log(this.singlePizza);
+
+    this.homeService.createOrder().subscribe(data => {
+      this.order = data;
+
+      this.orderItem.order_id = this.order.data.id;
     });
 
-    for(let i of this.pizza){
-      if(i.id = id){
-        this.unitprice = i.cost;
+    for (const p of this.pizza){
+      if (p.id === id){
+        this.singlePizza = p;
+        console.log(this.singlePizza);
       }
     }
 
 
+    this.orderItem.pizza_id = id;
 
-    console.log(this.quantity.value);
-    this.qnt = this.quantity.value;
+    this.orderItem.quantity = this.quantity.value;
 
-    // Delivery cost is 5 Euros
-    this.totalCost = (this.qnt * this.unitprice) + 5;
-    console.log(this.totalCost);
+    this.orderItem.price = this.orderItem.quantity * this.singlePizza.cost;
 
-    this.homeService.createOrder(id, this.qnt, this.totalCost).subscribe(
+    console.log(this.orderItem);
+
+
+
+    this.homeService.createOrderItem(this.orderItem).subscribe(
       res => {
-        this.order = res;
-        console.log(this.order);
+        this.items = res;
+        console.log(this.items);
       },
       err => {
         console.log(err.text);
@@ -67,25 +89,25 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  onSubmit(){
-    console.log(this.contactForm.value);
-    const info: any = this.contactForm.value;
+  // onSubmit(){
+  //   console.log(this.contactForm.value);
+  //   const info: any = this.contactForm.value;
 
-    this.homeService.createContact(info,this.order.data.id).subscribe(res=>{
-      console.log(res);
+  //   this.homeService.createContact(info, this.order.data.id).subscribe(res => {
+  //     console.log(res);
 
-      this.receipt = res;
-    });
+  //     this.receipt = res;
+  //   });
 
-  }
+  // }
 
 
-  ngOnInit(): void {
-    this.homeService.getPizza().subscribe(data => {
-      this.pizza = data;
-      console.log(this.pizza);
-    });
 
-  }
+}
 
+class OrderItem{
+  public quantity: number;
+  public price: number;
+  public order_id: any;
+  public pizza_id: any;
 }

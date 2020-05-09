@@ -8,8 +8,9 @@ import { AppConst } from '../../constants/app-const';
   providedIn: 'root'
 })
 export class HomeService {
-  private sPath: string = AppConst.serverPath;
-  private path: string = AppConst.Path;
+  private path: string = AppConst.pizzaPath;
+  private sPath: string = AppConst.orderPath;
+  private Path: string = AppConst.serverPath;
   private paths: string = AppConst.contactPath;
 
   constructor(private http: HttpClient) { }
@@ -32,17 +33,22 @@ export class HomeService {
     return this.http.get(url, this.httpOptions);
   }
 
-  createOrder(id, quantity, totalCost){
-    const url = this.sPath + 'create?' + 'pizza_id=' + id + '&' + 'quantity=' + quantity + '&' + 'totalCost=' + totalCost;
-    console.log(url);
+  createOrder(){
+    const url = this.sPath + 'create';
 
     return this.http.post(url, this.httpOptions);
   }
 
-  createContact(info, id){
-    const url = this.paths + '?name=' + info.name + '&' + 'email=' + info.email + '&' + 'phone=' + info.phone + '&' + 'apartment=' + info.apartment + '&' + 'street=' + info.street + '&' + 'order_id=' + id;
-    console.log(url);
+  createOrderItem(orderItem: any){
+    const url = this.Path + 'create';
 
-    return this.http.post(url, this.httpOptions);
+    return this.http.post(url, orderItem, this.httpOptions);
   }
+
+  // createContact(info, id){
+  //   const url = this.paths + '?name=' + info.name + '&' + 'email=' + info.email + '&' + 'phone=' + info.phone + '&' + 'apartment=' + info.apartment + '&' + 'street=' + info.street + '&' + 'order_id=' + id;
+  //   console.log(url);
+
+  //   return this.http.post(url, this.httpOptions);
+  // }
 }

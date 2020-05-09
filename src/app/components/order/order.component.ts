@@ -9,6 +9,10 @@ export class OrderComponent implements OnInit {
 
   constructor() { }
 
+  // Delivery cost is 5 Euros
+  // this.totalCost = (this.qnt * this.unitprice) + 5;
+  // console.log(this.totalCost);
+
   ngOnInit(): void {
   }
 
