@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 import { HomeService } from '../../services/home/home.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-home',
@@ -29,12 +30,16 @@ export class HomeComponent implements OnInit {
   unitprice: any;
   totalCost: any;
 
-  order: any;
+  // order: any;
   receipt: any;
 
   items: any;
 
+  trial: any;
+
   orderItem: OrderItem = new OrderItem();
+
+  order: Order;
 
   constructor(
     private homeService: HomeService,
@@ -43,22 +48,18 @@ export class HomeComponent implements OnInit {
     public dialog: MatDialog
     ) { }
 
-    ngOnInit(): void {
-      this.homeService.getPizza().subscribe(data => {
-        this.pizza = data;
-        console.log(this.pizza);
-      });
+  ngOnInit(): void {
+    this.homeService.getPizza().subscribe(data => {
+      this.pizza = data;
+      console.log(this.pizza);
+    });
 
-    }
+  }
+
+
 
   createOrderItem(id: any): void {
     console.log(id);
-
-    this.homeService.createOrder().subscribe(data => {
-      this.order = data;
-
-      this.orderItem.order_id = this.order.data.id;
-    });
 
     for (const p of this.pizza){
       if (p.id === id){
@@ -66,7 +67,13 @@ export class HomeComponent implements OnInit {
         console.log(this.singlePizza);
       }
     }
+    this.creatOrder();
 
+    this.trial = this.order.id;
+
+    console.log(this.trial);
+
+    this.orderItem.order_id = this.trial;
 
     this.orderItem.pizza_id = id;
 
@@ -87,6 +94,16 @@ export class HomeComponent implements OnInit {
         console.log(err.text);
       }
     );
+  }
+
+  creatOrder(){
+    this.homeService.createOrder().subscribe((data: any) => {
+      this.order = data.data;
+      // this.trial = this.order.data.id;
+      console.log(this.order);
+    });
+    return this.order;
+
   }
 
   // onSubmit(){
@@ -110,4 +127,13 @@ class OrderItem{
   public price: number;
   public order_id: any;
   public pizza_id: any;
+}
+
+class Order{
+  public contact: any;
+  public id: number;
+  public orderItem: any;
+  public orderNumber: string;
+  public totalCost: any;
+  created_at: string;
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { HttpClient } from '@angular/common/http';
+import * as Rx from "rxjs/Rx";
+import { from, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { AppConst } from '../../constants/app-const';
 
@@ -36,13 +38,29 @@ export class HomeService {
   createOrder(){
     const url = this.sPath + 'create';
 
-    return this.http.post(url, this.httpOptions);
+    return this.http.post(url, this.httpOptions).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError(error => {
+        return throwError('Please check your inputs');
+      })
+    );
   }
 
   createOrderItem(orderItem: any){
-    const url = this.Path + 'create';
+    console.log(JSON.stringify(orderItem));
 
-    return this.http.post(url, orderItem, this.httpOptions);
+    const url = this.Path + 'create/';
+
+    return this.http.post(url, JSON.stringify(orderItem), this.httpOptions).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError(error => {
+        return throwError('Please check your inputs');
+      })
+    );
   }
 
   // createContact(info, id){
